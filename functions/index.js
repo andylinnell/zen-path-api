@@ -17,12 +17,9 @@ app.post("/users", addUser)
 app.delete("/users/:userId", deleteUser)
 app.patch("/users/:userId", updateUser)
 
-
-
 /**************** TASKS *********************/
 app.get("/tasks", getAllTasks)
 app.post("/tasks", addTask)
-
 
 
 export const api = functions.https.onRequest( app );

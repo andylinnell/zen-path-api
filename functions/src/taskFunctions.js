@@ -10,7 +10,7 @@ const collectionTasks = mongo_credientials.collection_tasks // zen-tasks is coll
 // Getall: Tasks
 export async function getAllTasks(req, res) {
     const db = await dbConnect();
-    const collection = await db.collection(collectionTasks).find({}).toArray()
+    const collection = await db.collection(collectionTasks).find({}).sort({"taskNo":1}).toArray()
 
     console.table(collection)
     res.send(collection)
@@ -27,7 +27,7 @@ export async function addTask(req, res) {
         res.start(500).send(err)
         return
     })
-    res.status(201).send( {message: 'New Task Inserted'})
+    res.status(201).send( {message: 'New Task Inserted', task: {newTask}})
 }
 
 
